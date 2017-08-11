@@ -34,7 +34,7 @@ protected function createComponentDatagrid($name, IDatagridFactory $factory)
     return $factory->create();
 }
 ```
-OR
+or
 ```php
 protected function createComponentSomeone(Someone $someone)
 {
