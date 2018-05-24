@@ -20,6 +20,7 @@ trait AutowiredComponent
     /**
      * Get presenter context.
      *
+     * @internal
      * @return Container
      */
     private function getPresenterContext()
@@ -37,6 +38,7 @@ trait AutowiredComponent
      * @param $name
      * @return IComponent
      * @throws UnexpectedValueException
+     * @throws ReflectionException
      */
     protected function createComponent($name)
     {
