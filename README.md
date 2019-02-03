@@ -1,5 +1,9 @@
-Autowired
-=========
+Autowired for component
+=======================
+
+This trait allows self class use in parameters for `createComponent*`
+
+inspired by: https://github.com/Kdyby/Autowired
 
 Installation
 ------------
@@ -9,13 +13,15 @@ $ composer require geniv/nette-autowired
 ```
 or
 ```json
-"geniv/nette-autowired": ">=1.0.0"
+"geniv/nette-autowired": ">=1.0"
 ```
 
 require:
 ```json
-"php": ">=5.6.0",
-"nette/nette": ">=2.4.0"
+"php": ">=7.0",
+"nette/component-model": ">=2.3",
+"nette/di": ">=2.4",
+"nette/reflection": ">=2.4"
 ```
 
 Include in application
@@ -29,14 +35,14 @@ class BasePresenter extends Presenter
 
 usage:
 ```php
-protected function createComponentDatagrid($name, IDatagridFactory $factory)
+protected function createComponentDatagrid(string $name, IDatagridFactory $factory): DatagridFactory
 {
     return $factory->create();
 }
 ```
 or
 ```php
-protected function createComponentSomeone(Someone $someone)
+protected function createComponentSomeone(Someone $someone): Someone
 {
     return $someone;
 }
