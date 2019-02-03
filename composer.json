@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.0",
     "nette/component-model": ">=2.3",
     "nette/di": ">=2.4",
     "nette/reflection": ">=2.4"
