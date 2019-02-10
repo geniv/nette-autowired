@@ -13,7 +13,7 @@ $ composer require geniv/nette-autowired
 ```
 or
 ```json
-"geniv/nette-autowired": ">=1.0"
+"geniv/nette-autowired": "^1.6"
 ```
 
 require:
