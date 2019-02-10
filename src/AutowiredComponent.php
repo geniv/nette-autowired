@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 use Nette\ComponentModel\IComponent;
 use Nette\DI\Container;
@@ -23,7 +23,7 @@ trait AutowiredComponent
      * @internal
      * @return Container
      */
-    private function getPresenterContext()
+    private function getPresenterContext(): Container
     {
         if ($this->presenterContext === null) {
             $this->presenterContext = $this->getPresenter()->context;
@@ -48,15 +48,11 @@ trait AutowiredComponent
         // check name component and method exist in context
         if ($ucFirstComponentName !== $name && method_exists($this, $componentName)) {
             $method = new Method($this, $componentName);
-
-            if ($method->getName() !== $componentName) {
-                return;
-            }
             $parameters = $method->getParameters();
 
             // separate first parameter component $name
             $args = [];
-            if (($first = reset($parameters)) && !$first->className) {
+            if (isset($parameters[0]) && !$parameters[0]->className) {
                 $args[] = $name;
             }
 
@@ -67,5 +63,7 @@ trait AutowiredComponent
             }
             return $component;
         }
+        // override nette exception for fail component
+        throw new UnexpectedValueException('Component {control ' . $name . '} did not find any method `' . $componentName . '`');
     }
 }
